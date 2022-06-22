@@ -1,0 +1,20 @@
+# cibersort <- deconvo_tme(eset = expr, method = "cibersort", arrays = FALSE, perm = 200)
+# write.csv(cibersort[, -c(24:26)], "cibersort.csv", row.names = F)
+mcp <- deconvo_tme(eset = expr, method = "mcpcounter")
+write.csv(mcp, "mcp.csv", row.names = F)
+estimate <- deconvo_tme(eset = expr, method = "estimate")
+write.csv(estimate, "estimate.csv", row.names = F)
+timer <- deconvo_tme(eset = expr, method = "timer", group_list = rep("gbm", dim(expr)[2]))
+write.csv(timer, "TIMER.csv", row.names = F)
+
+
+library(GSVA)
+(load("../../28immune_gene.gs.RData"))
+gsva <- as.data.frame(t(gsva(as.matrix(expr), gs, method = "ssgsea")))
+df <- gsva %>% as.data.frame() %>% rownames_to_column("id")
+df$id %<>% str_replace_all("\\.", "-")
+names(df) %<>% str_replace_all("\\.", "_")
+names(df) %<>% str_replace_all(" ", "_")
+names(df)[-1] <- str_c(names(df)[-1], "_ssGSEA")
+names(df)[1] <- "ID"
+write.csv(df, "ssGSEA.csv", row.names = F)
