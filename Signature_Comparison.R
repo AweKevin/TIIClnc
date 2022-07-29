@@ -25,36 +25,3 @@ comp <- function(model) {
 }
 l <- pbapply::pblapply(unique(df2$Model), FUN = function(i) {try(comp(i), TRUE)})
 df <- do.call(rbind, l)  
-
-ggplot(
-  df,
-  aes(
-    x = c_index,
-    xend = 0,
-    y = model,
-    yend = model,
-    color = Cancer
-  )
-) +
-  # geom_vline(xintercept = 0.7, linetype = "dashed", lwd = 0.8) +
-  geom_segment(lwd = 1.5) +
-  geom_point(size = 2.5) +
-  scale_x_continuous(breaks = seq(0, 0.9, 0.1), limits = c(0, 0.9), expand = expand_scale(mult = c(0, 0.1))) +
-  scale_y_discrete(limits = rev(df$model)) +
-  scale_colour_manual(
-    breaks = c("GBM", "LGG", "Glioma"),
-    values = c("#eb4035", "#a7d4c3", "#94d2ef")
-  ) +
-  labs(
-    x = "c-index",
-    y = "", color = ""
-  ) +
-  ggpubr::theme_pubr() +
-  theme(
-    legend.text = element_text(size = 15, colour = "black"),
-    axis.text.x = element_text(size = 12, colour = "black"),
-    axis.text.y = element_text(size = 12, colour = "black"),
-    axis.title.x = element_text(size = 18, colour = "black"),
-    panel.grid = element_blank()
-  )
-
