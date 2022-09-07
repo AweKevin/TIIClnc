@@ -9,9 +9,9 @@ To comprehensively evaluate the immune cell-related lncRNA, 115 purified cell li
 
 101 combinations of 10 machine learning algorithms, including Lasso, Ridge, stepwise Cox, CoxBoost, random survival forest (RSF), elastic network (Enet), partial least squares regression for Cox (plsRcox), supervised principal components (SuperPC), generalized boosted regression modeling (GBM), and survival support vector machine (survival-SVM) based on 10-folds cross-validation were further used to screen out the most valuable TIIClnc signature with the highest C-index.
 
-## Immune infiltration cells estimation
+## Machine Learning Functions
 
-TIMER algorithm, ssGSEA algorithm, MCPcounter algorithm, and ESTIMATE algorithm were applied for calculating the abundance of immune infiltrating cells and ESTIMATE score. 
+10 machine learning algorithms, including Lasso, Ridge, stepwise Cox, CoxBoost, random survival forest (RSF), elastic network (Enet), partial least squares regression for Cox (plsRcox), supervised principal components (SuperPC), generalized boosted regression modeling (GBM), and survival support vector machine (survival-SVM) 
 
 ## Comparison of published signatures
 
